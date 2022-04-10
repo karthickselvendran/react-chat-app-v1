@@ -1,3 +1,42 @@
 .chatPage {
     height: 100vh;
+    padding: 20px;
+}
+
+.logout {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.logout {
+    margin: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #FFC300;
+    color: white;
+    border: none;
+    font-size: 19px;
+    padding: 10px 20px;
+}
+
+.chatPageFull {
+    background-color: white;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.chatPageSide1 {
+    width: 600px;
+    background-color: rgb(211, 210, 210);
+    border-right: 1px solid gray;
+}
+
+.chatPageSide2 {
+    width: 100%;
+    background-color: rgb(243, 249, 246);
+    background-image: url(https://media.istockphoto.com/vectors/man-with-laptop-studying-or-working-concept-table-with-books-lamp-vector-id1164543414?k=20&m=1164543414&s=170667a&w=0&h=Y7ubaR3afLNqtM0T5GkyvrGg3U7BM_jIEaqFOwpJaDQ=);
+    background-repeat: no-repeat;
+    background-position: center;
 }

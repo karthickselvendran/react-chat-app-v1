@@ -14,10 +14,9 @@ export const App = () => {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
-          <Route path='' element={<SignUp />} />
+          <Route path='' element={<SignIn />} />
           <Route path='signup' element={<SignUp />} />
           <Route path='signin' element={<SignIn />} />
-          
           <Route path='chat' element={<Chat />} />
           <Route path='*' element={
             <main className='wrongRoute'>
