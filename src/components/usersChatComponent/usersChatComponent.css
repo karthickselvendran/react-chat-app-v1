@@ -1,0 +1,54 @@
+.chatArea {
+    background-color: rgb(233, 225, 241);
+    height: 80vh;
+    position: relative;
+    /* min-width: 300px; */
+}
+
+.selectedUserName {
+    background-color: rgb(211, 210, 210);
+    height: 9vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* max-height: 70vh;
+    overflow-y: scroll; */
+}
+
+.selectedUserImg {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: green; */
+    color: white;
+}
+
+.inputElement {
+    /* background-color: aqua; */
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.curPtr {
+    cursor: pointer;
+}
+
+/* 
+    background-color: white;
+    height: 70vh;
+    max-height: 70vh;
+    overflow-y: scroll;
+*/

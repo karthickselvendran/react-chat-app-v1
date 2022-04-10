@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import FormInput from '../formInput/FormInput'
 import SingleUserCard from '../singleUserCard/SingleUserCard'
 import './usersListComponent.css'
 
-const UsersListComponent = ({ usersList, onChange, search }) => {
+const UsersListComponent = ({ usersList, onChange, search, selectUser }) => {
 
     return (
         <div>
@@ -12,7 +12,7 @@ const UsersListComponent = ({ usersList, onChange, search }) => {
                 {
                     usersList?.length ? usersList.map(({ userid, email, _id }) => {
                         return (
-                            <SingleUserCard key={_id} userid={userid} email={email} />
+                            <SingleUserCard key={_id} id={_id} userid={userid} email={email} selectUser={selectUser} />
                         )
                     }) : <h1>No users found</h1>
                 }

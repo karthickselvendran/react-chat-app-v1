@@ -8,6 +8,14 @@
     cursor: pointer;
 }
 
+.singleUserCard:hover {
+    background-color: rgb(211, 210, 210);
+}
+
+.singleUserCard:focus {
+    background-color: rgb(211, 210, 210);
+}
+
 .userImg {
     height: 50px;
     width: 50px;

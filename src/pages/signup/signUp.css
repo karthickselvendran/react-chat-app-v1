@@ -13,12 +13,18 @@ form {
     width: 300px;
 }
 
-h1,
-h4 {
+h1 {
     color: rgb(83, 4, 83);
     text-align: center;
     margin-top: 15px;
     margin-bottom: 30px;
+}
+
+h4 {
+    color: rgb(83, 4, 83);
+    text-align: center;
+    /* margin-top: 15px; */
+    margin-bottom: 10px;
 }
 
 .custom_button {
