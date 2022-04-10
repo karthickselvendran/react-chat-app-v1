@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import FormInput from '../../components/formInput/FormInput';
-import './signIn.css';
+import { signinService } from '../../service/service';
+import { toast } from 'react-toastify';
 
+const initialState = {
+    email: "",
+    password: ""
+}
 export const SignIn = () => {
-    const [values, setValues] = useState({
-        userid: "",
-        email: "",
-        password: ""
-    });
+    const navigate = useNavigate()
+    const [values, setValues] = useState(initialState);
+
+    useEffect(() => {
+        const userData = JSON.parse(localStorage.getItem('userData'))
+        if (userData && userData.userToken) {
+            navigate('/chat')
+        }
+    })
 
     const inputs = [
         {
@@ -32,13 +41,26 @@ export const SignIn = () => {
         }
     ]
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(values)
-    }
-
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        signinService(values)
+            .then((res) => {
+                if (res.data.status === 200) {
+                    localStorage.setItem('userData', JSON.stringify(res.data.userData))
+                    setValues(initialState)
+                    navigate('/chat')
+                    toast.success('signin successfully')
+                } else {
+                    toast.error(res.data.message)
+                }
+            })
+            .catch((err) => {
+                toast.error(err.message)
+            })
     }
 
     return (
@@ -51,7 +73,7 @@ export const SignIn = () => {
                     ))
                 }
 
-                <button>Sign In</button>
+                <button className='custom_button'>Sign In</button>
 
                 <div className='link'>
                     <Link to='/signup'>Are you New user? Signup</Link>

@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import FormInput from '../../components/formInput/FormInput';
+import { signupService } from '../../service/service';
+import { toast } from 'react-toastify';
 import './signUp.css';
 
+const initialState = {
+    userid: "",
+    email: "",
+    password: ""
+}
+
 export const SignUp = () => {
-    const [values, setValues] = useState({
-        userid: "",
-        email: "",
-        password: ""
-    });
+    const navigate = useNavigate()
+    const [values, setValues] = useState(initialState);
+
+    useEffect(() => {
+        const userData = JSON.parse(localStorage.getItem('userData'))
+        if (userData && userData.userToken) {
+            navigate('/chat')
+        }
+    })
 
     const inputs = [
         {
@@ -45,6 +57,23 @@ export const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values)
+        signupService(values)
+            .then((res) => {
+                console.log(res.data)
+                if (res.data.status === 200) {
+                    // alert(res.data.message)
+                    // window.location.reload()
+                    navigate('/signin')
+                    toast.success('signup successfully')
+                    setValues(initialState)
+                } else {
+                    // alert(res.data.message)
+                    toast.error(res.data.message)
+                }
+            })
+            .catch((err) => {
+                toast.error(err.message)
+            })
     }
 
     const onChange = (e) => {
@@ -61,7 +90,7 @@ export const SignUp = () => {
                     ))
                 }
 
-                <button>Sign Up</button>
+                <button className='custom_button'>Sign Up</button>
 
                 <div className='link'>
                     <Link to='/signin'>Already have an account? Signin</Link>
