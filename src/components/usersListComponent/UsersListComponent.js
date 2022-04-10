@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FormInput from '../formInput/FormInput'
 import SingleUserCard from '../singleUserCard/SingleUserCard'
 import './usersListComponent.css'
 
-const UsersListComponent = ({ usersList }) => {
+const UsersListComponent = ({ usersList, onChange, search }) => {
+
     return (
         <div>
-            <FormInput placeholder="search users..." />
+            <FormInput name="search" type="text" placeholder="search users..." value={search} onChange={onChange} />
             <div className='usersList'>
                 {
                     usersList?.length ? usersList.map(({ userid, email, _id }) => {

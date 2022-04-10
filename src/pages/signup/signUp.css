@@ -13,7 +13,8 @@ form {
     width: 300px;
 }
 
-h1 {
+h1,
+h4 {
     color: rgb(83, 4, 83);
     text-align: center;
     margin-top: 15px;
